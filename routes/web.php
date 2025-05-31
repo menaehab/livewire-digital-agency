@@ -3,20 +3,34 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
-Route::middleware(['auth'])->group(function () {
-    Route::redirect('settings', 'settings/profile');
+// Route::middleware(['auth'])->group(function () {
+//     Route::redirect('settings', 'settings/profile');
 
-    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
-    Volt::route('settings/password', 'settings.password')->name('settings.password');
-    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+//     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
+//     Volt::route('settings/password', 'settings.password')->name('settings.password');
+//     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+// });
+
+// require __DIR__.'/auth.php';
+
+/*
+ * Front Routes
+ */
+
+Route::name('front.')->group(function () {
+    Route::view('/', 'front.index')->name('index');
+    Route::view('about', 'front.about')->name('about');
+    Route::view('contact', 'front.contact')->name('contact');
+    Route::view('projects', 'front.projects')->name('projects');
+    Route::view('team', 'front.team')->name('team');
+    Route::view('service', 'front.service')->name('service');
+    Route::view('testimonial', 'front.testimonial')->name('testimonial');
 });
-
-require __DIR__.'/auth.php';
