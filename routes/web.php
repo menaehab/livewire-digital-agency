@@ -34,3 +34,10 @@ Route::name('front.')->group(function () {
     Route::view('service', 'front.service')->name('service');
     Route::view('testimonial', 'front.testimonial')->name('testimonial');
 });
+
+/*
+ * Admin Routes
+ */
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::view('', 'admin.index')->name('index');
+});
