@@ -41,6 +41,9 @@ Route::name('front.')->group(function () {
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('IsAdmin')->group(function () {
         Route::view('', 'admin.index')->name('index');
+
+        Route::view('settings', 'admin.settings.index')->name('settings');
+        Route::view('skills', 'admin.skills.index')->name('skills');
     });
     Route::view('login', 'admin.auth.login')->middleware('guest:admin')->name('login');
 });

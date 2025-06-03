@@ -1,6 +1,7 @@
 @extends('admin.master')
 
 @section('title', 'Dashboard')
+@section('dashboard-active', 'active')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
@@ -192,7 +193,7 @@
                         </div>
                     </div>
                     <!-- </div>
-                                <div class="row"> -->
+                                    <div class="row"> -->
                     <div class="col-12 mb-4">
                         <div class="card">
                             <div class="card-body">
