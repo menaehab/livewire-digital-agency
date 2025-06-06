@@ -18,6 +18,7 @@ class ServiceUpdate extends Component
         $this->name = $this->service->name;
         $this->icon = $this->service->icon;
         $this->description = $this->service->description;
+        $this->dispatch('showUpdateModal');
     }
     public function rules()
     {
@@ -39,7 +40,7 @@ class ServiceUpdate extends Component
             'icon' => $this->icon,
             'description' => $this->description,
         ]);
-        $this->dispatch('updateModalToggle');
+        $this->dispatch('hideUpdateModal');
         $this->dispatch('refreshServicesTable');
         $this->reset();
     }

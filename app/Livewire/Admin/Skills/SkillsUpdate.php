@@ -16,6 +16,7 @@ class SkillsUpdate extends Component
         $this->skill = Skill::findOrFail($id);
         $this->name = $this->skill->name;
         $this->progress = $this->skill->progress;
+        $this->dispatch('showUpdateModal');
     }
     public function rules()
     {
@@ -35,7 +36,7 @@ class SkillsUpdate extends Component
             'name' => $this->name,
             'progress' => $this->progress,
         ]);
-        $this->dispatch('updateModalToggle');
+        $this->dispatch('hideUpdateModal');
         $this->dispatch('refreshSkillsTable');
         $this->reset();
     }

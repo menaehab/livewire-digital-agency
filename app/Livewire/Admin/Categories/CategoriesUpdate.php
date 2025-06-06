@@ -15,6 +15,7 @@ class CategoriesUpdate extends Component
     {
         $this->category = Category::findOrFail($id);
         $this->name = $this->category->name;
+        $this->dispatch('showUpdateModal');
     }
     public function rules()
     {
@@ -32,12 +33,13 @@ class CategoriesUpdate extends Component
         $this->category->update([
             'name' => $this->name,
         ]);
-        $this->dispatch('updateModalToggle');
+        $this->dispatch('hideUpdateModal');
         $this->dispatch('refreshCategoriesTable');
         $this->reset();
     }
     public function render()
     {
-        return view('livewire.admin.categories.categories-update');
+        $categories = Category::all();
+        return view('livewire.admin.categories.categories-update', compact('categories'));
     }
 }
