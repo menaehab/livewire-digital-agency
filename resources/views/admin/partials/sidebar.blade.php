@@ -88,5 +88,13 @@
             </a>
         </li>
 
+        <!-- Counters -->
+        <li class="menu-item @yield('counters-active')">
+            <a href="{{ route('admin.counters') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-code"></i>
+                <div data-i18n="Analytics">Counters</div>
+            </a>
+        </li>
+
     </ul>
 </aside>

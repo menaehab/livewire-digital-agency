@@ -11,18 +11,18 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Progress</th>
+                            <th>Count</th>
+                            <th>Icon</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @if (count($skills))
-                            @foreach ($skills as $skill)
+                        @if (count($counters))
+                            @foreach ($counters as $counter)
                                 <tr>
-                                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                        <strong>{{ $skill->name }}</strong>
-                                    </td>
-                                    <td>{{ $skill->progress }}</td>
+                                    <td>{{ $counter->name }}</td>
+                                    <td>{{ $counter->count }}</td>
+                                    <td>{{ $counter->icon }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -31,16 +31,12 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="#"
-                                                    wire:click.prevent="$dispatch('skillShow', {id: {{ $skill->id }}})"><i
-                                                        class="bx bx-show me-1"></i>
-                                                    Show</a>
-                                                <a class="dropdown-item" href="#"
-                                                    wire:click.prevent="$dispatch('skillUpdate', {id: {{ $skill->id }}})"><i
+                                                    wire:click.prevent="$dispatch('counterUpdate', {id: {{ $counter->id }}})"><i
                                                         class="bx bx-edit-alt me-1" data-bs-target="#updateModal"
                                                         data-bs-toggle="modal"></i>
                                                     Edit</a>
                                                 <a class="dropdown-item" href="#"
-                                                    wire:click.prevent="$dispatch('skillDelete', {id: {{ $skill->id }}})"><i
+                                                    wire:click.prevent="$dispatch('counterDelete', {id: {{ $counter->id }}})"><i
                                                         class="bx bx-trash me-1"></i>
                                                     Delete</a>
                                             </div>
@@ -50,14 +46,14 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="4" class="text-center">No Skills Found</td>
+                                <td colspan="4" class="text-center">No Counters Found</td>
                             </tr>
                         @endif
                     </tbody>
                 </table>
             </div>
             <div class="mx-auto" style="width: 95%">
-                {{ $skills->links() }}
+                {{ $counters->links() }}
             </div>
         </div>
         <!--/ Basic Bootstrap Table -->

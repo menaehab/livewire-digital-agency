@@ -15,25 +15,31 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @foreach ($subscribers as $subscriber)
-                            <tr>
-                                <td>{{ $subscriber->email }}</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#"
-                                                wire:click.prevent="$dispatch('subscriberDelete', {id: {{ $subscriber->id }}})"><i
-                                                    class="bx bx-trash me-1"></i>
-                                                Delete</a>
+                        @if (count($subscribers))
+                            @foreach ($subscribers as $subscriber)
+                                <tr>
+                                    <td>{{ $subscriber->email }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown">
+                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#"
+                                                    wire:click.prevent="$dispatch('subscriberDelete', {id: {{ $subscriber->id }}})"><i
+                                                        class="bx bx-trash me-1"></i>
+                                                    Delete</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="2" class="text-center">No Subscribers Found</td>
                             </tr>
-                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
