@@ -47,6 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::view('subscribers', 'admin.subscribers.index')->name('subscribers');
         Route::view('counters', 'admin.counters.index')->name('counters');
         Route::view('services', 'admin.services.index')->name('services');
+        Route::view('messages', 'admin.messages.index')->name('messages');
     });
     Route::view('login', 'admin.auth.login')->middleware('guest:admin')->name('login');
 });
