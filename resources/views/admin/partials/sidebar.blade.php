@@ -96,5 +96,13 @@
             </a>
         </li>
 
+        <!-- Services -->
+        <li class="menu-item @yield('services-active')">
+            <a href="{{ route('admin.services') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-package"></i>
+                <div data-i18n="Analytics">Services</div>
+            </a>
+        </li>
+
     </ul>
 </aside>
