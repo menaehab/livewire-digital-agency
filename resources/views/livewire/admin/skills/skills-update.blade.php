@@ -1,6 +1,6 @@
 <div class="my-3" wire:ignore.self>
     <!-- Modal -->
-    <div class="modal fade" id="updateModal" tabindex="-1" aria-hidden="true" wire:ignore.self>
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-hidden="true" wire:ignore.self data-bs-backdrop="static">
         <div class="modal-dialog" role="document">
             <form wire:submit.prevent="submit" class="modal-content">
                 <div class="modal-header">
@@ -37,3 +37,19 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    document.addEventListener('livewire:initialized', () => {
+        const updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+        
+        Livewire.on('skillUpdate', () => {
+            updateModal.show();
+        });
+        
+        Livewire.on('updateModalToggle', () => {
+            updateModal.hide();
+        });
+    });
+</script>
+@endpush

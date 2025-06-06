@@ -18,6 +18,7 @@ class CountersUpdate extends Component
         $this->name = $this->counter->name;
         $this->count = $this->counter->count;
         $this->icon = $this->counter->icon;
+        $this->dispatch('showUpdateModal');
     }
     public function rules()
     {
@@ -39,7 +40,7 @@ class CountersUpdate extends Component
             'count' => $this->count,
             'icon' => $this->icon,
         ]);
-        $this->dispatch('updateModalToggle');
+        $this->dispatch('hideUpdateModal');
         $this->dispatch('refreshCountersTable');
         $this->reset();
     }
